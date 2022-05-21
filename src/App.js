@@ -1,7 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+
+import logo from "./logo.svg";
+import "./App.css";
+
+import { getAnimals } from "../src/api/getAnimals";
+import { fetchAccessToken } from "./api/fetchToken";
 
 function App() {
+  const [accessToken, setAccessToken] = useState(null);
+
+  useEffect(() => {
+    getAnimals(accessToken);
+    fetchAccessToken(setAccessToken);
+    console.log(accessToken);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
