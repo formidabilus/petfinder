@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getAnimals = async (accessToken) => {
+export const getAnimals = async (accessToken, setAnimals) => {
   try {
     const response = await axios.get("/animals", {
       headers: {
@@ -8,6 +8,7 @@ export const getAnimals = async (accessToken) => {
       },
     });
 
+    setAnimals(response);
     console.log(response);
   } catch (err) {
     if (err.response) {
